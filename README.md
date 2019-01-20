@@ -13,7 +13,7 @@ LUCAS (LUng CAncer Simple set)
 
 ### Frameworks
 
-SpFlow
+SPFlow
 * https://github.com/SPFlow/SPFlow
 
 OpenGM
