@@ -1,0 +1,8 @@
+Data type: non-sparse
+Target type: binary
+Number of features: 132
+Number of examples and check-sums:
+     	Num_ex	Check_sum
+Train	16033	142172387.00
+Test	10000	88827113.00
+All  	26033	230999500.00

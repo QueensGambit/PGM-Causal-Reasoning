@@ -5,11 +5,15 @@ These experiments are done in context of the course Probabilistic Graphical Mode
 
 ## Datasets
 
-### Artifical
+### Artifical generated data
 
 LUCAS (LUng CAncer Simple set)
 * http://www.causality.inf.ethz.ch/data/LUCAS.html
 
+### Real world data
+
+CINA-dataset (Census Is Not Adult dataset)
+* http://www.causality.inf.ethz.ch/challenge.php?page=datasets
 
 ### Frameworks
 
