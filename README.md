@@ -15,20 +15,37 @@ LUCAS (LUng CAncer Simple set)
 CINA-dataset (Census Is Not Adult dataset)
 * http://www.causality.inf.ethz.ch/challenge.php?page=datasets
 
+---
+
 ### Frameworks
 
-SPFlow
+#### SPFlow - An Easy and Extensible Library for Sum-Product Networks
 * https://github.com/SPFlow/SPFlow
 
-OpenGM
-* http://hciweb2.iwr.uni-heidelberg.de/opengm/
 
-BNFinder
-* https://launchpad.net/bnfinder
+#### bnlearn - An R package for Bayesian network learning and inference 
+* http://www.bnlearn.com/
+
+#### BNFinder - tool for learning bayesian networks 
 * https://github.com/sysbio-vo/bnfinder
+* http://bioputer.mimuw.edu.pl/software/bnf/
+* https://academic.oup.com/bioinformatics/article/25/2/286/218091
+_Note: I needed to install a slightly older version for scipy in order to avoid: https://github.com/scipy/scipy/issues/9606_
+```bash
+SyntaxError: Non-ASCII character '\xe2'
+```
+using
+```bash
+sudo pip2 install scipy==1.1.0
+```
 
-BayesSpy
+#### BayesSpy
+* _seems that it doesn't support structure learning functionality_
 * https://github.com/bayespy/bayespy
+
+#### OpenGM - a C++ template library for discrete factor graph models and distributive operations
+* _seems that it doesn't support structure learning functionality_
+* http://hciweb2.iwr.uni-heidelberg.de/opengm/
 
 ### References
 
