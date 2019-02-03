@@ -22,14 +22,17 @@ CINA-dataset (Census Is Not Adult dataset)
 #### SPFlow - An Easy and Extensible Library for Sum-Product Networks
 * https://github.com/SPFlow/SPFlow
 
-
 #### bnlearn - An R package for Bayesian network learning and inference 
 * http://www.bnlearn.com/
 
-#### BNFinder - tool for learning bayesian networks 
+### BDgraph: Bayesian Structure Learning in Graphical Models using Birth-Death MCMC (R)
+* https://cran.r-project.org/web/packages/BDgraph/index.html
+
+#### BNFinder - Tool for learning bayesian networks 
 * https://github.com/sysbio-vo/bnfinder
 * http://bioputer.mimuw.edu.pl/software/bnf/
 * https://academic.oup.com/bioinformatics/article/25/2/286/218091
+
 _Note: I needed to install a slightly older version for scipy in order to avoid: https://github.com/scipy/scipy/issues/9606_
 ```bash
 SyntaxError: Non-ASCII character '\xe2'
@@ -39,7 +42,10 @@ using
 sudo pip2 install scipy==1.1.0
 ```
 
-#### BayesSpy
+#### libpgm - An endeavor to make Bayesian probability graphs easy to use
+* https://pythonhosted.org/libpgm/
+
+#### BayesSpy – Bayesian Python
 * _seems that it doesn't support structure learning functionality_
 * https://github.com/bayespy/bayespy
 
@@ -57,3 +63,9 @@ Towards A Rigorous Science of Interpretable Machine Learning, Finale Doshi-Velez
 
 Partial orientation and local structural learning of causal networks for prediction, Jianxin Yin, You Zhou, Changzhang Wang, Ping He, Cheng Zheng, Zhi Geng
 * http://proceedings.mlr.press/v3/yin08a/yin08a.pdf
+
+An Exploration of Structure Learning in Bayesian Networks, Constantin Berzan
+* https://thirld.com/files/senior_thesis.pdf
+
+Learning Bayesian Networks with the bnlearn R Package
+* https://arxiv.org/pdf/0908.3817.pdf
