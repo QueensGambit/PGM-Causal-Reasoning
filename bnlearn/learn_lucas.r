@@ -93,5 +93,6 @@ learn_bn <- function (data) {
 }
 
 # run all bn finder algo and generate the plots
-learn_bn(lucas)
+# learn_bn(lucas)
+learn_bn(cina_sel)
 
