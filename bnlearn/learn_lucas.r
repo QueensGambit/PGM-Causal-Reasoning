@@ -1,40 +1,97 @@
 library(bnlearn)
-
+library(dplyr)
 # basic example as shown in: https://arxiv.org/pdf/0908.3817.pdf
 
 # read csv file 
 lucas = read.csv("/home/queensgambit/Desktop/WiSe_18_19/PGM/project/PGM-Causal-Reasoning/data/LUCAS/lucas0_train.csv", header = TRUE) 
+cina = read.csv("/home/queensgambit/Desktop/WiSe_18_19/PGM/project/PGM-Causal-Reasoning/data/Adult_Cina/adult.data", header = TRUE)
+
+cina_sel = select(cina, race, occupation, relationship, sex, income, workclass, native.country, marital.status, education)
 
 # https://stackoverflow.com/questions/43789278/convert-all-columns-to-characters-in-a-data-frame
 # convert dataset into logical and afterwards into factor format
 lucas[, ] <- lapply(lucas[, ], as.logical)
 lucas[, ] <- lapply(lucas[, ], as.factor)
 
+cina_sel[, ] <- lapply(cina_sel[, ], as.factor)
+
 # show the lucas data represented as a string
 print(str(lucas))
 
-# apply different struture learning algorithms
-bn.gs <- gs(lucas)
-bn2 <- iamb(lucas)
-bn3 <- fast.iamb(lucas)
-bn4 <- inter.iamb(lucas)
+learn_bn <- function (data) {
+  
+  ## Constraint based
+  
+  # Define plot layout
+  par(mfrow = c(1, 3))
+  
+  # Grow-Shink
+  bn.gs <- gs(data)
+  plot(bn.gs, main = "Grow-Shrink")
+  
+  # Incremental Association
+  bn.ia <- iamb(data)
+  plot(bn.ia, main = "Incremental Association")
+  
+  par(mfrow = c(1, 3))
+  
+  # Fast Incremental Association
+  bn.fia <- fast.iamb(data)
+  plot(bn.fia, main = "Fast Incremental Association")
+  
+  # Interleaved Incremental Association
+  bn.iia <- inter.iamb(data)
+  plot(bn.iia, main = "Interleaved Incremental Association")
+  
+  # Max-Min Parents and Children
+  bn.mmpc <- bnlearn::mmpc(data)
+  plot(bn.mmpc, main = "Max-Min Parents and Children")
+  
+  ## Find bayesian networks based on score values
+  # Hill Climbing
+  
+  # Define plot layout
+  par(mfrow = c(1, 3))
+  
+  # Akaike Information Criterion
+  bn.hc.aic <- hc(data, score = "aic")
+  plot(bn.hc.aic, main = "Akaike Information Criterion")
+  
+  # Bayesian Information Criterion
+  bn.hc.bic <- hc(data, score = "bic")
+  plot(bn.hc.bic, main = "Bayesian Information Criterion")
+  
+  # Bayesian Dirichlet Equivalent Score 
+  # bn.hbde <- hc(data, score = "bde")
+  # plot(bn.hbde, main = "Bayesian Dirichlet Equivalent Score")
+  
+  # Log-Likelihood
+  bn.hc.ll <- hc(data, score = "loglik")
+  plot(bn.hc.ll, main = "Log-Likelihood")
+  
+  # Tabu Search - Compute the score value
 
-# compare the found graph structures between them
-compare(bn.gs, bn2)
-compare(bn.gs, bn3)
-compare(bn.gs, bn4)
+  # Define plot layout
+  par(mfrow = c(1, 3))
+  
+  # Akaike Information Criterion
+  bn.hc.aic <- tabu(data, score = "aic")
+  plot(bn.hc.aic, main = "Akaike Information Criterion")
+  
+  # Bayesian Information Criterion
+  bn.hc.bic <- tabu(data, score = "bic")
+  plot(bn.hc.bic, main = "Bayesian Information Criterion")
+  
+  # Bayesian Dirichlet Equivalent Score 
+  # bn.hbde <- tabu(data, score = "bde")
+  # plot(bn.hbde, main = "Bayesian Dirichlet Equivalent Score")
+  
+  # Log-Likelihood
+  bn.hc.ll <- tabu(data, score = "loglik")
+  plot(bn.hc.ll, main = "Log-Likelihood")
+  
+}
 
-# compute the score value
-bn.hc <- hc(lucas, score = "aic")
-bn.hc
-compare(bn.hc, bn.gs)
+# run all bn finder algo and generate the plots
+learn_bn(lucas)
 
-# plot the found structures
-par(mfrow = c(1,2))
-plot(bn.gs, main = "Constraint-based algorithms") #, highlight = highlight.opts)
-plot(bn.hc, main = "Hill-Climbing") #, highlight = highlight.opts)
-
-# plot using graphviz
-highlight.opts <- list(nodes = c("Smoking"), arcs = c("Smoking", "Yellow_Fingers"), col = "red", fill = "grey")
-graphviz.plot(bn.gs, title("Constraint-based algorithms"), highlight = highlight.opts)
-graphviz.plot(bn.hc, title("Hill Climbing"), highlight = highlight.opts)
