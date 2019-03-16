@@ -53,6 +53,26 @@ sudo pip2 install scipy==1.1.0
 * _seems that it doesn't support structure learning functionality_
 * http://hciweb2.iwr.uni-heidelberg.de/opengm/
 
+
+### Citation
+
+If you find this project useful please consider citing:
+```
+@misc{queensgambit_experiments_2019,
+	title = {Experiments on structure learning of {Bayesian} {Networks} with emphasis on finding causal relationship: {QueensGambit}/{PGM}-{Causal}-{Reasoning}},
+	copyright = {MIT},
+	shorttitle = {Experiments on structure learning of {Bayesian} {Networks} with emphasis on finding causal relationship},
+	url = {https://github.com/QueensGambit/PGM-Causal-Reasoning},
+	urldate = {2019-03-15},
+	author = {Willig, Moritz and Czech, Johannes},
+	month = feb,
+	year = {2019},
+	note = {original-date: 2019-01-20T13:56:16Z}
+}
+```
+
+Our project report can be found [here](PGM_Project_Report.pdf).
+
 ### References
 
 Graphical Models for Probabilistic and Causal Reasoning, Judea Pearl
